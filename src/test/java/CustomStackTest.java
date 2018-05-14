@@ -1,6 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.Stack;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,6 +17,29 @@ class CustomStackTest {
     void testNegativeMaxSize(){
         assertThrows(NegativeArraySizeException.class,
                 ()->{ new CustomStack<>(-9); });
+    }
+
+    @Test
+    void testAddChangeSize(){
+        this.testStack.push(5);
+        assertEquals(2, testStack.getLeftSpace());
+    }
+
+    @Test
+    void testAdd(){
+        this.testStack.push(1);
+        this.testStack.push(2);
+        this.testStack.push(3);
+        assertEquals("[1, 2, 3]", this.testStack.toString());
+    }
+
+    @Test
+    void testAddToManyElements(){
+        assertThrows(NullPointerException.class,
+                () ->{ for(int i = 0; i <= 5; i++) {
+                    this.testStack.push(i);
+                }
+        });
     }
 
 }

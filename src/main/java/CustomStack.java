@@ -4,11 +4,16 @@ public class CustomStack <T> {
 
     private int maxSize;
     private Object [] stackArray;
-    private int occupiedIndex = 0;
+    private int usedSpace = 0;
+    private int [] freeIndex;
 
     public CustomStack(int maxSize) {
         this.stackArray = new Object[maxSize];
         this.maxSize = maxSize;
+    }
+
+    public Object[] getStackArray() {
+        return stackArray;
     }
 
     public int getMaxSize() {
@@ -16,16 +21,23 @@ public class CustomStack <T> {
     }
 
     public void push(T data){
-        if(occupiedIndex < maxSize) {
-            this.stackArray[occupiedIndex] = data;
-            occupiedIndex++;
+        if(usedSpace < maxSize) {
+            for(int i = 0; i < maxSize; i++){
+                if(this.stackArray[i] == null){
+                    this.stackArray[i] = data;
+                    usedSpace++;
+                    break;
+                }
+            }
         }else{
             throw new NullPointerException();
         }
 
     }
 
-    public void pop(){
+    public void pop(int index){
+        this.stackArray[index] = null;
+        usedSpace--;
 
     }
 
@@ -34,7 +46,7 @@ public class CustomStack <T> {
     }
 
     public int getLeftSpace(){
-        return this.maxSize - this.stackArray.length;
+        return this.maxSize - this.usedSpace;
     }
 
     @Override
