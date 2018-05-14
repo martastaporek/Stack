@@ -5,15 +5,10 @@ public class CustomStack <T> {
     private int maxSize;
     private Object [] stackArray;
     private int usedSpace = 0;
-    private int [] freeIndex;
 
     public CustomStack(int maxSize) {
         this.stackArray = new Object[maxSize];
         this.maxSize = maxSize;
-    }
-
-    public Object[] getStackArray() {
-        return stackArray;
     }
 
     public int getMaxSize() {
@@ -45,7 +40,8 @@ public class CustomStack <T> {
 
     }
 
-    public void peak(){
+    public Object peak(){
+        return this.stackArray[usedSpace - 1];
 
     }
 

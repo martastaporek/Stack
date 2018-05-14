@@ -50,4 +50,11 @@ class CustomStackTest {
 
     }
 
+    @Test
+    void testPeek(){
+        this.testStack.push(2);
+        this.testStack.push(5);
+        assertEquals(5, this.testStack.peak());
+    }
+
 }
