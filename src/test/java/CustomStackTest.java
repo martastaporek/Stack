@@ -6,10 +6,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CustomStackTest {
 
+    private CustomStack <Integer> testStack = new CustomStack<>(3);
+
     @Test
     void testGeneric(){
-        Stack <String> stringStack = new Stack<>();
-        Stack <Double> doubleStack = new Stack<>();
+        CustomStack <String> stringStack = new CustomStack<>(0);
+        CustomStack <Double> doubleStack = new CustomStack<>(0);
+    }
+
+    @Test
+    void testNegativeMaxSize(){
+        assertThrows(NegativeArraySizeException.class,
+                ()->{ new CustomStack<>(-9); });
     }
 
 }
