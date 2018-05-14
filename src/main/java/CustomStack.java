@@ -36,8 +36,12 @@ public class CustomStack <T> {
     }
 
     public void pop(int index){
-        this.stackArray[index] = null;
-        usedSpace--;
+        if(this.stackArray[index] != null) {
+            this.stackArray[index] = null;
+            usedSpace--;
+        }else{
+            throw new NullPointerException();
+        }
 
     }
 

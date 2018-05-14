@@ -42,4 +42,12 @@ class CustomStackTest {
         });
     }
 
+    @Test
+    void testThrowExceptionCallPopOnEmptyStack(){
+        assertThrows(NullPointerException.class,
+                () ->{ this.testStack.pop(0);
+                });
+
+    }
+
 }
